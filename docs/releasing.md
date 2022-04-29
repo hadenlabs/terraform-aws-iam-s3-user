@@ -1,8 +1,8 @@
 <!-- Space: Projects -->
-<!-- Parent: TerraformModuleTemplate -->
-<!-- Title: Releasing TerraformModuleTemplate -->
+<!-- Parent: TerraformAwsIamS3User -->
+<!-- Title: Releasing TerraformAwsIamS3User -->
 
-<!-- Label: TerraformModuleTemplate -->
+<!-- Label: TerraformAwsIamS3User -->
 <!-- Label: Project -->
 <!-- Label: Releasing -->
 <!-- Include: disclaimer.md -->
@@ -12,7 +12,7 @@
 
 ## Bump a new version
 
-Make a new version of terraform-module-template in the following steps:
+Make a new version of terraform-aws-iam-s3-user in the following steps:
 
 ### Generate version major
 
