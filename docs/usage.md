@@ -2,7 +2,7 @@
 
 ```hcl
   module "main" {
-    source  = "hadenlabs/terraform-module-template/aws"
+    source  = "hadenlabs/terraform-aws-iam-s3-user/aws"
     version = "0.0.0"
   }
 ```

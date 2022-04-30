@@ -10,7 +10,7 @@ on:
       - develop
 
 env:
-  IMAGE_NAME: 'hadenlabs/terraform-module-template'
+  IMAGE_NAME: 'hadenlabs/terraform-aws-iam-s3-user'
 
 jobs:
   test:

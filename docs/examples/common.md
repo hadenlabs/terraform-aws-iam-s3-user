@@ -1,6 +1,6 @@
 <!-- Space: Projects -->
-<!-- Parent: TerraformModuleTemplate -->
-<!-- Title: Examples TerraformModuleTemplate -->
+<!-- Parent: TerraformAwsIamS3User -->
+<!-- Title: Examples TerraformAwsIamS3User -->
 
 <!-- Label: Examples -->
 <!-- Include: ./../disclaimer.md -->
@@ -10,7 +10,7 @@
 
 ```hcl
   module "main" {
-    source  = "hadenlabs/terraform-module-template/aws"
+    source  = "hadenlabs/terraform-aws-iam-s3-user/aws"
     version = "0.0.0"
   }
 ```

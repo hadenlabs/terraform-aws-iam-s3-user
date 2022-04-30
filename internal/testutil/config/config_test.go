@@ -5,7 +5,7 @@ import (
 
 	"github.com/stretchr/testify/assert"
 
-	coreconfig "github.com/hadenlabs/terraform-module-template/config"
+	coreconfig "github.com/hadenlabs/terraform-aws-iam-s3-user/config"
 )
 
 func TestConfigLoadEnvSuccess(t *testing.T) {
