@@ -67,7 +67,7 @@ module "main" {
 ```hcl
   module "main" {
     source  = "hadenlabs/iam-s3-user/aws"
-    version = "0.0.0"
+    version = "0.1.0"
   }
 ```
 
@@ -78,7 +78,7 @@ module "main" {
 ```hcl
 module "main" {
   source  = "hadenlabs/iam-s3-user/aws"
-  version = "0.0.0"
+  version = "0.1.0"
   depends_on   = []
   enabled      = var.enabled
   name         = var.name
