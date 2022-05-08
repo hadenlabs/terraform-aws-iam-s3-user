@@ -4,21 +4,15 @@ import (
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
-
-	"github.com/hadenlabs/terraform-aws-iam-s3-user/config"
 	"github.com/stretchr/testify/assert"
-	"github.com/hadenlabs/terraform-aws-iam-s3-user/internal/common/log"
+
 	"github.com/hadenlabs/terraform-aws-iam-s3-user/internal/app/external/faker"
 	"github.com/hadenlabs/terraform-aws-iam-s3-user/internal/testutil"
 )
 
-func Test{{pascalCase testName}}Success(t *testing.T) {
+func TestBasicSuccess(t *testing.T) {
 	t.Parallel()
-	conf := config.Must()
-	logger := log.Factory(*conf)
-	logger.Debugf(
-		"values for test terraform-aws-iam-s3-user is",
-	)
+
 	tags := map[string]interface{}{
 		"tag1": "tags1",
 	}
@@ -28,10 +22,6 @@ func Test{{pascalCase testName}}Success(t *testing.T) {
 	enabled := true
 	useFullName := true
 	s3Actions := []string{
-		"s3:GetObject",
-		"s3:GetObjectAcl",
-		"s3:ListObjects",
-		"s3:ListBucket",
 		"s3:ListAllMyBuckets",
 	}
 	s3Resources := []string{
@@ -40,7 +30,7 @@ func Test{{pascalCase testName}}Success(t *testing.T) {
 
 	terraformOptions := &terraform.Options{
 		// The path to where your Terraform code is located
-        TerraformDir: "user-{{dashCase testName}}",
+		TerraformDir: "user-basic",
 		Upgrade:      true,
 		Vars: map[string]interface{}{
 			"namespace":    namespace,
