@@ -8,6 +8,8 @@ import (
 	"github.com/hadenlabs/terraform-aws-iam-s3-user/config"
 	"github.com/stretchr/testify/assert"
 	"github.com/hadenlabs/terraform-aws-iam-s3-user/internal/common/log"
+	"github.com/hadenlabs/terraform-aws-iam-s3-user/internal/app/external/faker"
+	"github.com/hadenlabs/terraform-aws-iam-s3-user/internal/testutil"
 )
 
 func Test{{pascalCase testName}}Success(t *testing.T) {
@@ -17,12 +19,38 @@ func Test{{pascalCase testName}}Success(t *testing.T) {
 	logger.Debugf(
 		"values for test terraform-aws-iam-s3-user is",
 	)
+	tags := map[string]interface{}{
+		"tag1": "tags1",
+	}
+	namespace := testutil.Company
+	stage := testutil.Stage
+	name := faker.Server().Name()
+	enabled := true
+	useFullName := true
+	s3Actions := []string{
+		"s3:GetObject",
+		"s3:GetObjectAcl",
+		"s3:ListObjects",
+		"s3:ListBucket",
+		"s3:ListAllMyBuckets",
+	}
+	s3Resources := []string{
+		"arn:aws:s3:::bucket-name/*",
+	}
 
 	terraformOptions := &terraform.Options{
 		// The path to where your Terraform code is located
-        TerraformDir: "replace-name-{{dashCase testName}}",
+        TerraformDir: "user-{{dashCase testName}}",
 		Upgrade:      true,
 		Vars: map[string]interface{}{
+			"namespace":    namespace,
+			"stage":        stage,
+			"name":         name,
+			"enabled":      enabled,
+			"tags":         tags,
+			"use_fullname": useFullName,
+			"s3_actions":   s3Actions,
+			"s3_resources": s3Resources,
 		},
 	}
 
@@ -31,6 +59,6 @@ func Test{{pascalCase testName}}Success(t *testing.T) {
 
 	// This will run `terraform init` and `terraform apply` and fail the test if there are any errors
 	terraform.InitAndApply(t, terraformOptions)
-	outputID := terraform.Output(t, terraformOptions, "id")
-	assert.NotEmpty(t, outputID, outputID)
+	outputUserName := terraform.Output(t, terraformOptions, "user_name")
+	assert.NotEmpty(t, outputUserName, outputUserName)
 }
