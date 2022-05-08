@@ -10,7 +10,35 @@
 
 ```hcl
   module "main" {
-    source  = "hadenlabs/terraform-aws-iam-s3-user/aws"
+    source  = "hadenlabs/iam-s3-user/aws"
     version = "0.0.0"
   }
+```
+
+## Basic
+
+### data
+
+```hcl
+module "main" {
+  source  = "hadenlabs/iam-s3-user/aws"
+  version = "0.0.0"
+  depends_on   = []
+  enabled      = var.enabled
+  name         = var.name
+  stage        = var.stage
+  namespace    = var.namespace
+  tags         = var.tags
+  use_fullname = true
+  s3_actions   = [
+    "s3:GetObject",
+		"s3:GetObjectAcl",
+		"s3:ListObjects",
+		"s3:ListBucket",
+		"s3:ListAllMyBuckets",
+  ]
+  s3_resources = [
+		"arn:aws:s3:::bucket-name/*",
+  ]
+}
 ```
